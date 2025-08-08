@@ -35,8 +35,8 @@ respuestas = {}
 
 # %%
 respuestas[(1,0,"Moneda")] = [
-0, # 0. Cara
-0, # 1. Sello
+0.5, # 0. Cara
+0.5, # 1. Sello
 ""
 ]
 
@@ -52,9 +52,9 @@ respuestas[(1,0,"Moneda")] = [
 
 # %%
 respuestas[(1,1,"Cajas")] = [
-0, # 0. Caja 0
-0, # 1. Caja 1
-0, # 2. Caja 2
+1/3, # 0. Caja 0
+1/3, # 1. Caja 1
+1/3, # 2. Caja 2
 0, # 3. Otro lugar
 ""
 ]
@@ -72,12 +72,12 @@ respuestas[(1,1,"Cajas")] = [
 
 # %%
 respuestas[(1,2,"Mentir")] = [
-0, # 0. Maxima incertidumbre (entropía)
+0.05, # 0. Maxima incertidumbre (entropía)
 0, # 1. Minima incertidumbre (entropía)
-0, # 2. Maxima incertidumbre (entropía) dada la información disponible (restricciones)
-0, # 3. Minima incertidumbre (entropía) dada la información disponible (restricciones)
+0.9, # 2. Maxima incertidumbre (entropía) dada la información disponible (restricciones)
+0.05, # 3. Minima incertidumbre (entropía) dada la información disponible (restricciones)
 0, # 4. Ninguna de las anteriores
-"",
+"Dada la informacion disponible, maximizar la incertidumbre, seria no asumir mas de lo que se sabe, o sea no mentir",
 ]
 
 # %% [markdown]
@@ -99,15 +99,15 @@ respuestas[(1,2,"Mentir")] = [
 # %%
 respuestas[(1,3,"Universos")] = [
 0, # 0. Regalo = 1, Abren = 1
-0, # 1. Regalo = 1, Abren = 2
-0, # 2. Regalo = 1, Abren = 3
+1/6, # 1. Regalo = 1, Abren = 2
+1/6, # 2. Regalo = 1, Abren = 3
 0, # 3. Regalo = 2, Abren = 1
 0, # 4. Regalo = 2, Abren = 2
-0, # 5. Regalo = 2, Abren = 3
+1/3, # 5. Regalo = 2, Abren = 3
 0, # 6. Regalo = 3, Abren = 1
-0, # 7. Regalo = 3, Abren = 2
+1/3, # 7. Regalo = 3, Abren = 2
 0, # 8. Regalo = 3, Abren = 3
-"Justifique brevemente",
+"No se puede abrir la 1, porque es la reservada. Si la 2 tiene el regalo, no se puede abrir. Lo mismo para la 3. Los casos 1 y 2 son la prob. de que el regalo esté ahi por la prob. de que abran esa caja. Lo mismo con los casos 5 y 7, pero aca solo hay una opcion para abrir",
 ]
 
 # %% [markdown]
@@ -127,13 +127,13 @@ respuestas[(1,3,"Universos")] = [
 
 # %%
 respuestas[(1,4,"Razonamiento")] = [
-0, # 0. Antes del siglo 17
-0, # 1. Siglo 17
-0, # 2. Siglo 18
-0, # 3. Siglo 19
-0, # 4. Siglo 20
-0, # 5. Siglo 21
-"",
+0.05, # 0. Antes del siglo 17
+0.2, # 1. Siglo 17
+0.3, # 2. Siglo 18
+0.3, # 3. Siglo 19
+0.1, # 4. Siglo 20
+0.05, # 5. Siglo 21
+"Se mencionó en la clase pero no me acuerdo",
 ]
 
 # %% [markdown]
@@ -152,9 +152,9 @@ respuestas[(1,5,"Independencia")] = [
 0, # 0. 0.9
 0, # 1. 0.1
 0, # 2. 0.0
-0, # 3. 0.2
+1, # 3. 0.2
 0, # 4. Ninguna de las anteriores
-"Justificar brevemente",
+"Como son independientes, es el producto de sus probabilidades",
 ]
 
 # %% [markdown]
@@ -196,13 +196,13 @@ respuestas[(1,6,"Marginal")] = [
 0, # 9. P(Y=1): 0.55
 0, # 10. P(Y=1): 0.60
 0, # 11. P(Y=1): 0.65
-0, # 12. P(Y=1): 0.70
+1, # 12. P(Y=1): 0.70
 0, # 13. P(Y=1): 0.75
 0, # 14. P(Y=1): 0.80
 0, # 15. P(Y=1): 0.85
 0, # 16. P(Y=1): 0.90
 0, # 17. Ninguna de las anteriores
-"Justifique brevemente.",
+"La suma de los casos donde Y=1",
 ]
 
 
@@ -234,7 +234,7 @@ respuestas[(1,6,"Marginal")] = [
 respuestas[(1,7,"Condicional")] = [
 0, # 0. P(Y=1|X=1): 1/2
 0, # 1. P(Y=1|X=1): 1/3
-0, # 2. P(Y=1|X=1): 2/3
+1, # 2. P(Y=1|X=1): 2/3
 0, # 3. P(Y=1|X=1): 1/4
 0, # 4. P(Y=1|X=1): 2/4
 0, # 5. P(Y=1|X=1): 3/4
@@ -248,7 +248,7 @@ respuestas[(1,7,"Condicional")] = [
 0, # 13. P(Y=1|X=1): 4/6
 0, # 14. P(Y=1|X=1): 5/6
 0, # 15. Ninguna de las anteriores
-"Justifique brevemente.",
+"Por definición de probabilidad condicional",
 ]
 
 
@@ -263,9 +263,9 @@ respuestas[(1,7,"Condicional")] = [
 
 # %%
 respuestas[(1,8,"Overfitting")] = [
-0, # 0. No
-0, # 1. Si
-"",
+0.2, # 0. No
+0.8, # 1. Si
+"El overfitting es la estimación excesiva de parámetros o reglas a partir de evidencia limitada, por lo que supongo que aparece a la par del sistema de razonamiento para contextos de incertidumbre",
 ]
 
 # %% [markdown]
@@ -278,9 +278,9 @@ respuestas[(1,8,"Overfitting")] = [
 
 # %%
 respuestas[(1,9,"Evaluación")] = [
-0, # 0. No
-0, # 1. Si
-"Justifique brevemente",
+0.9, # 0. No
+0.1, # 1. Si
+"Depende del caso, pero cada modelo puede ser evaluado de distintas formas",
 ]
 
 # %% [markdown]
@@ -296,12 +296,12 @@ respuestas[(1,9,"Evaluación")] = [
 
 # %%
 respuestas[(1,10,"Predicción")] = [
-0, # 0. El modelo causal correcto nunca puede ser mejor prediciendo que los complejos algoritmos de AI/ML.
-0, # 1. El modelo causal correcto a veces puede ser mejor, y a veces peor, que los complejos algoritmos de AI/ML.
-0, # 2. El modelo causal correcto nunca puede ser peor prediciendo que los complejos algoritmos de AI/ML.
-0, # 3. Los modelos causales solo explican, no predicen.
-0, # 4. Ninguna de las anteriores
-"Justifique brevemente",
+0.05, # 0. El modelo causal correcto nunca puede ser mejor prediciendo que los complejos algoritmos de AI/ML.
+0.6, # 1. El modelo causal correcto a veces puede ser mejor, y a veces peor, que los complejos algoritmos de AI/ML.
+0.05, # 2. El modelo causal correcto nunca puede ser peor prediciendo que los complejos algoritmos de AI/ML.
+0.05, # 3. Los modelos causales solo explican, no predicen.
+0.25, # 4. Ninguna de las anteriores
+"Intuición",
 ]
 
 # %% [markdown]
@@ -324,17 +324,17 @@ respuestas[(1,10,"Predicción")] = [
 # %%
 respuestas[(1,11,"Diversificación")] = [
 0, # 0. Recursos asignados a Cara: 0.0
-0, # 1. Recursos asignados a Cara: 0.1
-0, # 2. Recursos asignados a Cara: 0.2
-0, # 3. Recursos asignados a Cara: 0.3
-0, # 4. Recursos asignados a Cara: 0.4
-0, # 5. Recursos asignados a Cara: 0.5
-0, # 6. Recursos asignados a Cara: 0.6
-0, # 7. Recursos asignados a Cara: 0.7
-0, # 8. Recursos asignados a Cara: 0.8
-0, # 9. Recursos asignados a Cara: 0.9
+0.025, # 1. Recursos asignados a Cara: 0.1
+0.025, # 2. Recursos asignados a Cara: 0.2
+0.025, # 3. Recursos asignados a Cara: 0.3
+0.025, # 4. Recursos asignados a Cara: 0.4
+0.2, # 5. Recursos asignados a Cara: 0.5
+0.2, # 6. Recursos asignados a Cara: 0.6
+0.2, # 7. Recursos asignados a Cara: 0.7
+0.2, # 8. Recursos asignados a Cara: 0.8
+0.1, # 9. Recursos asignados a Cara: 0.9
 0, # 10. Recursos asignados a Cara: 1.0
-"Justifique brevemente.",
+"Ambos extremos no tienen sentido. Para mi conviene distribuir los recursos más para el lado de cara porque paga mucho más.",
 ]
 
 # %% [markdown]
@@ -347,9 +347,9 @@ respuestas[(1,11,"Diversificación")] = [
 
 # %%
 respuestas[(1,12,"Apuesta individual")] = [
-0, # 0. No
-0, # 1. Sí
-"Justifique brevemente.",
+0.25, # 0. No
+0.75, # 1. Sí
+"Me baso en la esperanza, aunque no estoy tan seguro",
 ]
 
 # %% [markdown]
@@ -364,10 +364,10 @@ respuestas[(1,12,"Apuesta individual")] = [
 
 # %%
 respuestas[(1,13,"Fondo común")] = [
-0, # 0. Empeora
-0, # 1. Neutro
-0, # 1. Mejora
-"Justifique brevemente.",
+0.1, # 0. Empeora
+0.3, # 1. Neutro
+0.6, # 1. Mejora
+"Se reducen las probabilidades de quedarse sin fondos",
 ]
 
 # %% [markdown]
@@ -382,10 +382,8 @@ respuestas[(1,13,"Fondo común")] = [
 
 # %%
 respuestas[(1,14,"Tragedia de los comunes")] = [
-0, # 0. Nos conviene aportar al fondo común
-0, # 1. Es indistinto
-0, # 1. Nos conviene dejar de aportar mientras seguimos recibiendo la cuota del fondo común
-"Justifique brevemente.",
+0.1, # 0. Nos conviene aportar al fondo común
+0.1, # 1. Es indistinto
+0.8, # 1. Nos conviene dejar de aportar mientras seguimos recibiendo la cuota del fondo común
+"Reduce el riesgo de perder nuestros recursos pero el beneficio sigue siendo practicamente el mismo",
 ]
-
-
